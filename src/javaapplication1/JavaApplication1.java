@@ -77,7 +77,7 @@ public class JavaApplication1 {
         relacionales.add('!');
 
         for (char aCaractere : aCaracteres) {
-            System.out.println(aCaractere);
+            // System.out.println(aCaractere);
             switch (estado) {
                 case 0:
                     // automata para palabras reservadas
@@ -90,11 +90,11 @@ public class JavaApplication1 {
                         // automara para identificadores    
                     } else if (ide.contains(aCaractere)) {
                         estado = 2;
-                        System.out.println("Es ide");
+                        
 
                         ins += String.valueOf(aCaractere);
                         // automata para numeros    
-                    } else if (Character.isDigit(Character.getNumericValue(aCaractere))) {
+                    } else if (Character.isDigit(aCaractere)) {
                         estado = 4;
                         ins += String.valueOf(aCaractere);
 
@@ -127,7 +127,7 @@ public class JavaApplication1 {
 
                     }else {
                         System.out.println("El caracter no se reconoce. general" + ins+"  "+ aCaractere);
-                        System.exit(1); // 
+                        System.exit(41); // 
                     }
                     break;
 
@@ -182,6 +182,7 @@ public class JavaApplication1 {
                         System.exit(1); // 
                     }
 
+                    break;
                 case 4:
 
                     List<Character> sepNumeros = new ArrayList<>();
@@ -189,7 +190,7 @@ public class JavaApplication1 {
                     sepNumeros.add(' ');
                     sepNumeros.add(':');
 
-                    if (Character.isDigit(Character.getNumericValue(aCaractere))) {
+                    if (Character.isDigit((aCaractere))) {
                         estado = 4;
                         ins += aCaractere;
 
@@ -205,6 +206,8 @@ public class JavaApplication1 {
                         System.out.println("El caracter no se reconoce. c4" + ins);
                         System.exit(1); // 
                     }
+                    
+                    break;
 
                 case 5:
                     if (Character.isDigit(aCaractere)) {
@@ -215,6 +218,7 @@ public class JavaApplication1 {
                         System.exit(1); // 
                     }
 
+                    break;
                 case 6:
                     List<Character> sepNumeros2 = new ArrayList<>();
                     sepNumeros2.add(';');
@@ -225,7 +229,7 @@ public class JavaApplication1 {
                         estado = 6;
                         ins += aCaractere;
 
-                    } else if (sepNumeros2.contains(Character.getNumericValue(aCaractere))) {
+                    } else if (sepNumeros2.contains((aCaractere))) {
                         System.out.println("La sintaxis analizada es(numero): " + ins);
                         ins = "";
                         estado = 0;
@@ -233,6 +237,8 @@ public class JavaApplication1 {
                         System.out.println("El caracter no se reconoce. c6" + ins);
                         System.exit(1); // 
                     }
+                    
+                    break;
 
                 case 7:
                     List<Character> sepGrupos = new ArrayList<>();
@@ -247,6 +253,7 @@ public class JavaApplication1 {
                         System.out.println("El caracter no se reconoce. grupos c7" + ins);
                         System.exit(1); // 
                     }
+                    break;
 
                 case 8:
                     List<Character> sepOp = new ArrayList<>();
@@ -275,6 +282,7 @@ public class JavaApplication1 {
                         System.out.println("El caracter no se reconoce. relacionales c9" + ins);
                         System.exit(1); // 
                     }
+                    break;
                 case 10:
                     List<Character> seigual = new ArrayList<>();
                     seigual.add(';');
@@ -289,6 +297,7 @@ public class JavaApplication1 {
                         System.exit(1); // 
                     }
 
+                    break;
                 case 11:
                     List<Character> secoma = new ArrayList<>();
                     secoma.add(';');
@@ -303,6 +312,7 @@ public class JavaApplication1 {
                         System.exit(1); // 
                     }
 
+                    break;
                 default:
                 // throw new AssertionError();
             }
